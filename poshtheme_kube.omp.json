@@ -66,7 +66,7 @@
           "background": "#ebcc34",
           "properties": {
           "prefix": " ﴱ ",
-          "template": "{{.Cluster}}{{if .Namespace}} \uF0B1 {{.Namespace}}{{end}}"
+          "template": "{{.Cluster}}{{if .Namespace}} \uf1d0 {{.Namespace}}{{end}}"
           }
         }
       ],
