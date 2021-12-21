@@ -38,16 +38,6 @@
           }
         },
         {
-          "background": "#86BBD8",
-          "foreground": "#ffffff",
-          "powerline_symbol": "",
-          "properties": {
-            "prefix": "  "
-          },
-          "style": "powerline",
-          "type": "node"
-        },
-        {
           "type": "root",
           "style": "powerline",
           "powerline_symbol": "\uE0B0",
