@@ -8,7 +8,7 @@
           "background": "#9A348E",
           "foreground": "#ffffff",
           "properties": {
-            "display_host": false,
+            "display_host": true,
             "prefix": " "
           },
           "style": "diamond",
