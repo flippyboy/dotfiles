@@ -3,99 +3,108 @@
   "blocks": [
     {
       "alignment": "left",
-      "vertical_offset": 1,
       "segments": [
         {
           "background": "#9A348E",
           "foreground": "#ffffff",
           "properties": {
             "display_host": true,
-            "prefix": " "
+            "template": " {{ if .SSHSession }}\uf817 {{ end }}{{ .UserName }}@{{ .HostName }} "
           },
           "style": "diamond",
-          "trailing_diamond": "",
           "type": "session"
         },
         {
           "background": "#DA627D",
           "foreground": "#ffffff",
-          "powerline_symbol": "",
+          "powerline_symbol": "\ue0b0",
           "properties": {
-            "style": "full"
+            "style": "full",
+            "template": " {{ .Path }} "
           },
           "style": "powerline",
           "type": "path"
         },
         {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
           "background": "#FCA17D",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#62DABF{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}",
+            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
+            "{{ if gt .Behind 0 }}#B388FB{{ end }}"
+          ],
           "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
           "properties": {
-            "branch_icon": " ",
-            "display_stash_count": true,
-            "display_upstream_icon": true
-          }
+            "branch_icon": "\ue0a0 ",
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true,
+            "fetch_status": true,
+            "template": " {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} "
+          },
+          "style": "powerline",
+          "type": "git"
         },
         {
           "background": "#86BBD8",
           "foreground": "#ffffff",
-          "powerline_symbol": "",
+          "powerline_symbol": "\ue0b0",
           "properties": {
-            "prefix": "  "
+            "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} "
           },
           "style": "powerline",
           "type": "node"
         },
         {
-          "type": "root",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#111111",
           "background": "#ffff66",
+          "foreground": "#111111",
+          "powerline_symbol": "\ue0b0",
           "properties": {
-            "root_icon": "#"
-          }
-        },
-	{
-          "type": "kubectl",
+            "root_icon": "#",
+            "template": " \uf0e7 "
+          },
           "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#000000",
-          "background": "#ebcc34",
+          "type": "root"
+        },
+        {
+          "background": "#8362DA",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
           "properties": {
-          "prefix": " ﴱ ",
-          "template": "{{.Cluster}}{{if .Namespace}} \uf1d0 {{.Namespace}}{{end}}"
-          }
+            "template": " \ufd31 {{.Cluster}}{{if .Namespace}} \uf1d0 {{.Namespace}}{{end}} "
+          },
+          "style": "powerline",
+          "type": "kubectl"
         }
       ],
-      "type": "prompt"
+      "type": "prompt",
+      "vertical_offset": 1
     },
     {
-      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
-          "type": "root",
-          "style": "plain",
           "foreground": "#fff",
           "properties": {
-            "root_icon": "⚡"
-          }
+            "root_icon": "\u26a1",
+            "template": " \uf0e7 "
+          },
+          "style": "plain",
+          "type": "root"
         },
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#f1184c",
           "properties": {
-            "prefix": "",
-            "text": "🎳"
-          }
-	}
-      ]
+            "template": "🎳 "
+          },
+          "style": "plain",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
     }
   ],
-  "final_space": true
+  "final_space": true,
+  "version": 1
 }
