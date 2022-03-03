@@ -1,0 +1,10 @@
+function kauth() {
+  local u=$(kubectl config get-users | grep $1)
+  kubectl config set-credentials $u --token $2
+}
+function paste() {  # Add me to your .bashrc, perhaps.
+    powershell.exe Get-Clipboard | sed 's/\r//'
+    # The `sed` will remove the unwelcome carriage-returns
+}
+alias clip=clip.exe
+eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/poshtheme_win.omp.json)"
