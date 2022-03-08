@@ -1,1 +1,5 @@
-eval "$(oh-my-posh --init --shell bash --config ~/git/dotfiles/poshtheme_kube.omp.json)"
+eval "$(oh-my-posh --init --shell bash --config ~/git/dotfiles/themes/poshtheme_kube.omp.json)"
+function kauth() {
+  local u=$(kubectl config get-users | grep $1)
+  kubectl config set-credentials $u --token $2
+}
