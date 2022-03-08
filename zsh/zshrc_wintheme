@@ -7,4 +7,4 @@ function paste() {  # Add me to your .bashrc, perhaps.
     # The `sed` will remove the unwelcome carriage-returns
 }
 alias clip=clip.exe
-eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/poshtheme_win.omp.json)"
+eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/themes/poshtheme_win.omp.json)"
