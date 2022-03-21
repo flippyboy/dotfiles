@@ -15,3 +15,5 @@ function klogin() {
 }
 alias clip=clip.exe
 eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/themes/poshtheme_kube.omp.json)"
+export VISUAL=vim
+export EDITOR=vim
