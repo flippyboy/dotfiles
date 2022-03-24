@@ -1,6 +1,10 @@
 function kauth() {
-  local u=$(kubectl config get-users | grep $1)
-  kubectl config set-credentials $u --token $2
+  local context=$(kubectl config view -o json | jq '. as $o
+        | ."current-context" as $current_context_name
+        | $current_context_name' | tr -d '"')
+  local user=$(kubectl config get-users | grep $context)
+  
+  kubectl config set-credentials $user --token $1
 }
 function paste() {  # Add me to your .bashrc, perhaps.
     powershell.exe Get-Clipboard | sed 's/\r//'
