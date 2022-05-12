@@ -70,9 +70,7 @@
           "background": "#8362DA",
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
-          "properties": {
-            "template": " \ufd31 {{.Cluster}}{{if .Namespace}} \uf1d0 {{.Namespace}}{{end}} "
-          },
+          "template": " \ue7b7 {{.Cluster}}{{if .Namespace}} :: {{.Namespace}}{{end}} ",
           "style": "powerline",
           "type": "kubectl"
         }
