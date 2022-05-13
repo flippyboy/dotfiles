@@ -1,0 +1,19 @@
+function kauth() {
+  local context=$(kubectl config view -o json | jq '. as $o
+        | ."current-context" as $current_context_name
+        | $current_context_name' | tr -d '"')
+  local user=$(kubectl config get-users | grep $context)
+  
+  kubectl config set-credentials $user --token $1
+}
+function klogin() {
+
+    local context=$(kubectl config view -o json | jq '. as $o
+        | ."current-context" as $current_context_name
+        | $current_context_name' | tr -d '"')
+    microsoftedge.exe "https://oauth-openshift.apps.${context}.infra.stralfors.com/oauth/token/request"
+}
+alias clip=clip.exe
+eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/themes/poshtheme_win.omp.json)"
+export VISUAL=vim
+export EDITOR=vim
