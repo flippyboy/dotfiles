@@ -11,7 +11,7 @@ function klogin() {
     local context=$(kubectl config view -o json | jq '. as $o
         | ."current-context" as $current_context_name
         | $current_context_name' | tr -d '"')
-    microsoft-edge-dev "https://oauth-openshift.apps.${context}.infra.stralfors.com/oauth/token/request"
+    xdg-open "https://oauth-openshift.apps.${context}.infra.stralfors.com/oauth/token/request"
 }
 eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/themes/poshtheme_win.omp.json)"
 export VISUAL=vim
