@@ -55,14 +55,6 @@
           "style": "powerline",
           "template": " \uf0e7 ",
           "type": "root"
-        },
-        {
-          "background": "#8362DA",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "template": " \ue7b7 {{.Cluster}}{{if .Namespace}} :: {{.Namespace}}{{end}} ",
-          "style": "powerline",
-          "type": "kubectl"
         }
       ],
       "type": "prompt"
