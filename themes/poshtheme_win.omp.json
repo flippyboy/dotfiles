@@ -5,14 +5,26 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "shell",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ffffff",
+          "background": "#0077c2",
+          "properties": {
+            "mapped_shell_names": {
+              "pwsh": "PS"
+            }
+          }
+        },
+        {
           "background": "#9A348E",
           "foreground": "#ffffff",
           "properties": {
             "display_host": true
           },
           "style": "diamond",
-          "template": " {{ if .SSHSession }}\uf817 {{ end }}{{ .UserName }}@{{ .HostName }} ",
-          "type": "session"
+          "type": "session",
+          "template": "{{ if .SSHSession }}\uF817 {{ end }} {{ .UserName }} "
         },
         {
           "background": "#DA627D",
@@ -22,7 +34,6 @@
             "style": "full"
           },
           "style": "powerline",
-          "template": " {{ .Path }} ",
           "type": "path"
         },
         {
@@ -42,7 +53,6 @@
             "fetch_upstream_icon": true
           },
           "style": "powerline",
-          "template": " {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} ",
           "type": "git"
         },
         {
@@ -53,14 +63,12 @@
             "root_icon": "#"
           },
           "style": "powerline",
-          "template": " \uf0e7 ",
           "type": "root"
         },
         {
           "background": "#8362DA",
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
-          "template": " \ue7b7 {{.Cluster}}{{if .Namespace}} :: {{.Namespace}}{{end}} ",
           "style": "powerline",
           "type": "kubectl"
         }
