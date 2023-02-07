@@ -1,12 +1,30 @@
 function kauth() {
-  local u=$(kubectl config get-users | grep $1)
-  kubectl config set-credentials $u --token $2
+  local context=$(kubectl config view -o json | jq '. as $o
+        | ."current-context" as $current_context_name
+        | $current_context_name' | tr -d '"')
+  local user=$(kubectl config get-users | grep $context)
+  
+  kubectl config set-credentials $user --token $1
 }
 function paste() {  # Add me to your .bashrc, perhaps.
     powershell.exe Get-Clipboard | sed 's/\r//'
     # The `sed` will remove the unwelcome carriage-returns
 }
+function klogin() {
+
+    local context=$(kubectl config view -o json | jq '. as $o
+        | ."current-context" as $current_context_name
+        | $current_context_name' | tr -d '"')
+    rundll32.exe url.dll,FileProtocolHandler "https://oauth-openshift.apps.${context}.infra.stralfors.com/oauth/token/request"
+}
 alias clip=clip.exe
 eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/themes/poshtheme_win.omp.json)"
 export VISUAL=vim
 export EDITOR=vim
+
+bindkey -e
+# Control + backspace
+bindkey '^H' backward-kill-word
+# Control + arrows
+bindkey ";5C" forward-word
+bindkey ";5D" backward-word
