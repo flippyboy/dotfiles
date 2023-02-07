@@ -64,13 +64,6 @@
           },
           "style": "powerline",
           "type": "root"
-        },
-        {
-          "background": "#8362DA",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "style": "powerline",
-          "type": "kubectl"
         }
       ],
       "type": "prompt"
