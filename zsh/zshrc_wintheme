@@ -11,11 +11,13 @@ function paste() {  # Add me to your .bashrc, perhaps.
     # The `sed` will remove the unwelcome carriage-returns
 }
 function klogin() {
-
     local context=$(kubectl config view -o json | jq '. as $o
         | ."current-context" as $current_context_name
         | $current_context_name' | tr -d '"')
     rundll32.exe url.dll,FileProtocolHandler "https://oauth-openshift.apps.${context}.infra.stralfors.com/oauth/token/request"
+}
+function cert() {
+    openssl s_client -servername $1 -connect $1:443 2>/dev/null | openssl x509 -text
 }
 alias clip=clip.exe
 eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/themes/poshtheme_win.omp.json)"
