@@ -20,7 +20,7 @@ function cert() {
     openssl s_client -servername $1 -connect $1:443 2>/dev/null | openssl x509 -text
 }
 alias clip=clip.exe
-eval "$(oh-my-posh --init --shell zsh --config ~/git/dotfiles/themes/poshtheme_kube.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/git/dotfiles/themes/poshtheme_kube.omp.json)"
 export VISUAL=vim
 export EDITOR=vim
 
